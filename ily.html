@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I love you!</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #141414;
+    }
+
+    #popup-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      padding: 20px;
+      background-color: rgb(223, 151, 151);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      text-align: center;
+      opacity: 0;
+      transition: opacity 5s ease-in-out;
+      pointer-events: none;
+    }
+
+    #popup-container.show {
+      display: block;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #popup-container img {
+      max-width: 90%;
+      max-height: 80%;
+    }
+
+    #close-button {
+      margin-top: 10px;
+      cursor: pointer;
+      color: #000000;
+    }
+
+    .click,
+    .open {
+      background-color: #e74c3c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="click" onclick="togglePopup()">Click me first :3</button>
+  <button class="open" onclick="openIly2Page()">Click me second :3</button>
+  <button class="open" onclick="openIly3Page()">Click me third :3</button>
+
+  <div id="popup-container">
+    <h1>I love you so much Theo! Happy Birthday Dummy!!</h1>
+    <img src="pics/MyBeautifulHusband(andCars).png" alt="Boyfriend's Photo">
+    <div id="close-button" onclick="hidePopup()">Close</div>
+  </div>
+
+  <script>
+    function togglePopup() {
+      var popup = document.getElementById('popup-container');
+      if (popup.classList.contains('show')) {
+        hidePopup();
+      } else {
+        showPopup();
+      }
+    }
+
+    function showPopup() {
+      var popup = document.getElementById('popup-container');
+      popup.classList.add('show');
+    }
+
+    function hidePopup() {
+      document.getElementById('popup-container').classList.remove('show');
+    }
+
+    function openIly2Page() {
+      fadeOutAndNavigate('ily2.html');
+    }
+
+    function openIly3Page() {
+      fadeOutAndNavigate('ily3.html');
+    }
+
+    function fadeOutAndNavigate(destination) {
+      var buttons = document.querySelectorAll('button');
+      buttons.forEach(function (button) {
+        button.style.transition = 'opacity 5s ease-in-out';
+        button.style.opacity = '0';
+      });
+
+      setTimeout(function () {
+        window.location.href = destination;
+      }, 5000);
+    }
+  </script>
+
+</body>
+
+</html>
